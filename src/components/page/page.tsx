@@ -5,13 +5,13 @@ import {useSelector} from "react-redux";
 
 const A4_HEIGHT:number = 11.7;  //inch
 const A4_WIDTH:number = 8.3;
-const DPI:number = 82;
+const INCH_MM_FACTOR:number = 25.4;
 
 type PageProps= {
 
     image:string
     pageNumber:number,
-    onPositionChange:(x:number, y:number) => void,
+    onPositionChange:(x:number, y:number, page:number) => void,
     onClick:(pageNr:number) => void
 
 }
@@ -47,9 +47,9 @@ const Page:React.FC<PageProps> = ({onPositionChange, onClick ,pageNumber ,image}
     const calculateMousePosition = (e:any) => 
     {
         let rect = e.target.getBoundingClientRect();
-        let relativeX:number = e.clientX - rect.left;
-        let relativeY:number = e.clientY - rect.top;
-        onPositionChange(parseFloat(relativeX.toFixed(2)), parseFloat(relativeY.toFixed(2)));
+        let relativeX:number = ((e.clientX - rect.left)/dpiStore.dpi)*INCH_MM_FACTOR;
+        let relativeY:number = ((e.clientY - rect.top)/dpiStore.dpi)*INCH_MM_FACTOR;
+        onPositionChange(parseFloat(relativeX.toFixed(2)), parseFloat(relativeY.toFixed(2)), pageNumber);
     }
     
 

@@ -5,12 +5,14 @@ import Settings from './components/settings/settings';
 import TagSettings from './components/tagSettings/tagSettings';
 import Page from './components/page/page';
 import DragDrop from './components/dragDrop/dragDrop';
-
+import useLivePosition from './hooks/useLivePosition';
 
 function App() {
 
-
+  const livePos = useLivePosition();
   const [pages, setPages] = useState<JSX.Element[]>([]);
+
+
 
   const loadPages = (files: any[]) => {
     console.log(files);
@@ -18,7 +20,7 @@ function App() {
 
     for (let i = 0; i < files.length; i++) {
 
-      pageArr.push(<Page pageNumber={i+1} image={files[i]} onPositionChange={() => { }} onClick={(page:number) => {window.alert(page)}} />);
+      pageArr.push(<Page pageNumber={i+1} image={files[i]} onPositionChange={(x:number, y:number, page:number) => {livePos.updatePos(x, y, page)}} onClick={(page:number) => {window.alert(page)}} />);
     }
 
     setPages(pageArr);

@@ -5,11 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+
 import dpiReducer from "./features/dpi";
+import positionReducer from "./features/position";
+import livePositionReducer from './features/livePosition';
 
 const store = configureStore({
   reducer:{
-    dpi:dpiReducer
+    dpi:dpiReducer,
+    position:positionReducer,
+    livePosition:livePositionReducer
   }
 });
 
