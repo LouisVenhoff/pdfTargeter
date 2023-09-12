@@ -1,0 +1,19 @@
+.tagSettingsMainDiv
+{
+    width:400px;
+    height:400px;
+    border-radius:10px;
+    border-style:solid;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.tagSettingsControls{
+    display:flex;
+    flex-direction:column;
+    width:90%;
+
+}

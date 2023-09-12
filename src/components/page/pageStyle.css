@@ -1,0 +1,10 @@
+.pageMainDiv
+{
+    position:relative;
+    border-style: solid;
+    border-width:1px;
+    margin-bottom:25px;
+    margin-top:25px;
+    margin-left:200px;
+    overflow:hidden;
+}
