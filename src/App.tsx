@@ -6,10 +6,13 @@ import TagSettings from './components/tagSettings/tagSettings';
 import Page from './components/page/page';
 import DragDrop from './components/dragDrop/dragDrop';
 import useLivePosition from './hooks/useLivePosition';
+import usePosition from './hooks/usePosition';
 
 function App() {
 
   const livePos = useLivePosition();
+  const currentPos = usePosition();
+
   const [pages, setPages] = useState<JSX.Element[]>([]);
 
 
@@ -25,8 +28,6 @@ function App() {
 
     setPages(pageArr);
   }
-
-
 
   return (
     <div className="App">
